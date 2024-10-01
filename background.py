@@ -1,3 +1,7 @@
 import pygame
-def drawline(game_window, win_height, obj_width, win_width):
-    pygame.draw.rect(game_window, (255, 255, 0), (1, win_height // 2 + obj_width, win_width, 10))
+
+bike_image = pygame.image.load('bike.png')
+bike_image = pygame.transform.scale(bike_image, (120, 100))
+
+def bike(game_window, win_width, obj_y):
+    game_window.blit(bike_image, (win_width // 2, obj_y - 100))
