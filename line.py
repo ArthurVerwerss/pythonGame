@@ -1,5 +1,5 @@
 import pygame
-from background import *
+from bike import *
 pygame.init()
 
 # Set the window size and title
