@@ -1,0 +1,20 @@
+{"frames": {
+
+"bike.png":
+{
+	"frame": {"x":0,"y":0,"w":288,"h":222},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":288,"h":222},
+	"sourceSize": {"w":288,"h":222}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "bike_sheet.png",
+	"format": "RGBA8888",
+	"size": {"w":288,"h":222},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:9d47a51548ba82608403a02ebbb41fed:763ac37d33355933c8c17bb68c7abd21:877914066dee4cc3f9054c177d554c9c$"
+}
+}
