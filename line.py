@@ -31,6 +31,6 @@ while running:
     # draws the rectangle
     game_window.fill((0, 1, 1))
     bike(game_window, win_width, obj_y)
-    pygame.draw.rect(game_window, (150, 255, 0), (obj_x, obj_y, obj_width,    obj_height))
+    pygame.draw.rect(game_window, (150, 255, 0), (obj_x, obj_y, obj_width, obj_height))
     pygame.display.flip()
 pygame.quit()
