@@ -1,10 +1,13 @@
 import pygame
-from spritesheet import Spritesheet
+from spritesheet.spritesheet import Spritesheet
 
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = Spritesheet('spritesheet.png').parse_sprite('chick.png')
+        # my_spritesheet = Spritesheet('spritesheet/bike_sheet.png')
+        # bikes = [my_spritesheet.parse_sprite('bike_color.png'), my_spritesheet.parse_sprite('bike2.png')]
+        self.image = Spritesheet('spritesheet/bike_sheet.png').parse_sprite('bike2.png')
+        print(self.image)
         self.rect = self.image.get_rect()
         self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT =   False, False, False
         self.is_jumping, self.on_ground = False, False
@@ -25,9 +28,9 @@ class Player(pygame.sprite.Sprite):
     def horizontal_movement(self, dt):
         self.acceleration.x = 0
         if self.LEFT_KEY:
-            self.acceleration.x -= .3
+            self.acceleration.x -= .9
         elif self.RIGHT_KEY:
-            self.acceleration.x += .3
+            self.acceleration.x += .9
         self.acceleration.x += self.velocity.x * self.friction
         self.velocity.x += self.acceleration.x * dt
         self.limit_velocity(4)
@@ -40,14 +43,14 @@ class Player(pygame.sprite.Sprite):
         if self.velocity.y > 7:
             self.velocity.y = 7
         self.position.y += self.velocity.y * dt + (self.acceleration.y * .5) * (dt * dt)
-        if  self.position.y > 128:
+        if  self.position.y > 720 //2:
             self.on_ground = True
             self.velocity.y = 0
-            self.position.y = 128
+            self.position.y = 720 //2
         self.rect.bottom = self.position.y
         
         
-    # Set a maximal speed to go left or right
+  
     def limit_velocity(self, max_vel):
         min(-max_vel, max(self.velocity.x, max_vel))
         if abs(self.velocity.x) < .01: 
