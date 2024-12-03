@@ -1,5 +1,5 @@
 import pygame
-from spritesheet.spritesheet import Spritesheet
+from spritesheet import Spritesheet
 
 
 class Player(pygame.sprite.Sprite):

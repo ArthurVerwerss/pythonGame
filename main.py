@@ -1,6 +1,6 @@
 import pygame
 from player import Player
-from spritesheet.spritesheet import Spritesheet
+from spritesheet import Spritesheet
 from tiles import *
 
 pygame.init()
