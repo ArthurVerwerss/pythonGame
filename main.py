@@ -1,6 +1,7 @@
 import pygame
-from bike import *
 from player import Player
+from spritesheet.spritesheet import Spritesheet
+from tiles import *
 
 pygame.init()
 
@@ -8,20 +9,15 @@ pygame.init()
 win_width = 1270
 win_height = 720
 game_window = pygame.display.set_mode((win_width, win_height))
-pygame.display.set_caption("Moving Object Using PyGame")
 canvas = pygame.Surface((win_width, win_height))
 clock = pygame.time.Clock()
 TARGET_FPS = 60
 
 # Create player instance
 player = Player()
-
-# Need a starting point for the player
-obj_width = win_width
-obj_height = 10
-obj_x = 10
-obj_y = 720 // 2 - 12
-obj_speed = 30
+spritesheet = Spritesheet('spritesheet.png')
+map = TileMap('test_level.csv', spritesheet)
+player.position.x, player.position.y = map.start_x, map.start_y
 
 running = True
 while running:
@@ -52,13 +48,10 @@ while running:
                     player.velocity.y *= .25
                     player.is_jumping = False
 
-    player.update(dt)
+    player.update(dt, map.tiles)
 
-    game_window.fill((0, 1, 1))
-
-    # Draw the player and other elements
-    player.draw(game_window)
-    pygame.draw.rect(game_window, (150, 255, 0), (obj_x, obj_y, obj_width, obj_height))
-
-    # Update the display once per frame
-    pygame.display.flip()
+    canvas.fill((0, 180, 240))
+    map.draw_map(canvas)
+    player.draw(canvas)
+    game_window.blit(canvas, (0, 0))
+    pygame.display.update()

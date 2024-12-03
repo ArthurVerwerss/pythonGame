@@ -5,9 +5,7 @@ from spritesheet.spritesheet import Spritesheet
 class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
-        self.image = Spritesheet(
-            'spritesheet/bike_sheet.png').parse_sprite('bike2.png')
-        print(self.image)
+        self.image = Spritesheet('spritesheet.png').parse_sprite('chick.png')
         self.rect = self.image.get_rect()
         self.LEFT_KEY, self.RIGHT_KEY, self.FACING_LEFT = False, False, False
         self.is_jumping, self.on_ground = False, False
@@ -48,10 +46,6 @@ class Player(pygame.sprite.Sprite):
             self.velocity.y = 7
         self.position.y += self.velocity.y * dt + \
             (self.acceleration.y * .5) * (dt * dt)
-        # if  self.position.y > 720 //2:
-        #     self.on_ground = True
-        #     self.velocity.y = 0
-        #     self.position.y = 720 //2
         self.rect.bottom = self.position.y
 
     def limit_velocity(self, max_vel):
